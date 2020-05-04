@@ -1,0 +1,212 @@
+body{
+   
+    margin: 0;
+    font-family: "Montserrat";
+    font-size: 1rem;
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    background-color: #000099;
+    margin-top: .5rem;
+    border-radius: .5rem;
+    border: 1px solid black;
+}
+
+h1 {
+    margin-bottom: 0;
+    color: white;
+}
+
+#message {
+    color: #000099;
+    background-color:white;
+    display: inline-block;
+    width: 20%;
+}
+
+
+.container{
+    display: grid;
+    border: 1px solid black;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: min-content;
+    grid-gap:2px;
+    grid-template-areas:
+    "total1 total1 header header header header header header total2 total2"
+    "total1 total1 player player player player player player total2 total2"
+    "upper-scores upper-scores upper-scores upper-scores upper-scores bottom-scores bottom-scores bottom-scores bottom-scores bottom-scores "
+    "dices dices dices dices dices dices dices dices dices dices"
+    "actions actions actions actions actions actions actions actions actions actions";
+    background-color: white;
+}
+
+.dices {
+    grid-area: dices;
+    border: 1px solid black;
+    display:grid;
+    grid-template-columns:  repeat(5, 1fr);
+    grid-gap: 1%;
+    align-content: space-between;
+}
+
+.dice {
+    background-color: #000099;
+    border: 1px solid black;
+    border-radius: .5rem;
+    font-size: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    margin: .5rem;
+    padding: .1rem;
+    color: white;
+}
+
+.actions {
+    grid-area: actions;
+    background-color:white;
+    font-size: 1.5rem;
+    text-align: center;
+    
+}
+
+#total1, #total2 {
+    border-radius: .5rem;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    padding: .5rem;
+    margin: .5rem;
+}
+
+#total1 {
+    grid-area: total1;
+    background-color: rgb(255, 0, 191);
+}
+
+#total2 {
+    grid-area: total2;
+    background-color:  rgb(0, 255, 242);
+}
+
+.player{
+    grid-area: player;
+    background-color: white;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+.messages{
+    grid-area: messages;
+}
+
+#rollsCount {
+    grid-area: rollscount;
+    background-color: white;
+    text-align: center;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+.upper-scores {
+    grid-area: upper-scores;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+    margin: .1rem;
+    padding: .1rem;
+}
+
+.bottom-scores {
+    grid-area: bottom-scores;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: white;
+    margin: .1rem;
+    padding: .1rem;
+}
+
+.score, .player1, .player2 {
+    width: 90%;
+    height: auto;
+    float: left;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: .5rem;
+    font-size: 1em;
+    text-align: center;
+    margin: .1rem;
+    padding: 0;
+}
+
+.player1.open {
+    background-color: rgb(255, 205, 243);
+}
+
+.player2.open {
+    background-color: rgb(203, 255, 252);
+}
+
+.red {
+    background-color: red;
+}
+
+.player1.marked {
+    background-color: rgb(153, 4, 116);
+}
+
+.player1.saved {
+    background-color: rgb(255, 0, 191);
+}
+
+.player2.marked {
+    background-color: rgb(18, 141, 135);
+}
+
+.player2.saved {
+    background-color: rgb(0, 255, 242);
+}
+
+#rollsLeft {
+    color: red;
+}
+
+button, button.player1, button.player2 {
+    width: 40%;
+    height: 90%;
+    float: center;
+    text-transform: uppercase;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    margin: 5px;
+    padding: 1px;
+}
+
+button.player1 {
+    background-color: rgb(255, 0, 191);
+}
+
+button.player2 {
+    background-color: cyan;
+}
+
+#btnRoll:disabled, btnRoll[disabled],
+#btnPlay:disabled, btnPlay[disabled]
+ {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+/* button:hover {
+	color: white;
+    background: steelblue;
+} */
