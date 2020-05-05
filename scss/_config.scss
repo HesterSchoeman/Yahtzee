@@ -1,0 +1,7 @@
+$back-color: #444;
+$player1-color: #ff00bf;
+$player2-color: #00fff2;
+
+@mixin easeOut {
+  transition: all 0.5s ease-out;
+}
