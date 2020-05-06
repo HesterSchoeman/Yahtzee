@@ -49,32 +49,58 @@ body {
   padding: 0.5rem;
   margin: 0.5rem; }
 
+.start {
+  grid-area: start;
+  display: grid;
+  grid-template-columns: 6fr;
+  justify-items: center;
+  height: 8 vh; }
+
+#btnStart {
+  width: 80%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 5vh;
+  margin: 5;
+  padding: 5; }
+
 .messages {
   grid-area: messages;
-  background-color: #444;
   text-align: center;
   vertical-align: middle;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  margin: 5px 10px; }
+
+#message {
+  width: 100%;
+  height: 5vh;
+  background-color: #444; }
+  #message.player1 {
+    color: #ff00bf; }
+  #message.player2 {
+    color: #00fff2; }
 
 .upper-scores {
   grid-area: upper-scores;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #444;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0.1rem;
   padding: 0.1rem;
-  height: 60vh; }
+  height: 50vh; }
 
 .bottom-scores {
   grid-area: bottom-scores;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #444;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0.1rem;
   padding: 0.1rem;
-  height: 60vh; }
+  height: 50vh; }
 
 .dices {
   grid-area: dices;
@@ -86,10 +112,10 @@ body {
     background-color: #2b2b2b;
     border: 1px solid black;
     border-radius: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     vertical-align: middle;
-    margin: 0.5rem;
+    margin: 0rem 0.5rem;
     padding: 0.5rem;
     color: white; }
     .dices .dice.red {
@@ -107,8 +133,8 @@ body {
     text-transform: uppercase;
     border: 1px solid black;
     border-radius: 8px;
-    margin: 5;
-    padding: 5; }
+    margin: 0.5rem;
+    padding: 0.1rem; }
     .actions .action.disabled {
       border: 1px solid #999999;
       background-color: #cccccc;

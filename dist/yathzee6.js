@@ -106,7 +106,7 @@ $("#btnPlay").on("click", function () {
     } else {
       updateTotals(player2);
       $("#sum2").text(nTotal);
-      if (nSaved == 5) {
+      if (nSaved == 13) {
         bGameOver = true;
         $btnPlay.disabled = true;
         $btnRoll.disabled = true;

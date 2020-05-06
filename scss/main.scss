@@ -57,22 +57,54 @@ body {
   @include totals;
 }
 
+.start {
+  grid-area: start;
+  display: grid;
+  grid-template-columns: 6fr;
+  justify-items: center;
+  height: 8 vh;
+}
+
+#btnStart {
+  width: 80%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 5vh;
+  margin: 5;
+  padding: 5;
+}
+
 .messages {
   grid-area: messages;
-  background-color: $back-color;
+
   text-align: center;
   vertical-align: middle;
   font-size: 1.5rem;
+  margin: 5px 10px;
+}
+
+#message {
+  width: 100%;
+  height: 5vh;
+  background-color: $back-color;
+  &.player1 {
+    color: $player1-color;
+  }
+  &.player2 {
+    color: $player2-color;
+  }
 }
 
 @mixin scores {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: $back-color;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0.1rem;
   padding: 0.1rem;
-  height: 60vh;
+  height: 50vh;
 }
 
 .upper-scores {
@@ -95,10 +127,10 @@ body {
     background-color: darken($back-color, 10);
     border: 1px solid black;
     border-radius: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     vertical-align: middle;
-    margin: 0.5rem;
+    margin: 0rem 0.5rem;
     padding: 0.5rem;
     color: white;
     &.red {
@@ -119,8 +151,8 @@ body {
     text-transform: uppercase;
     border: 1px solid black;
     border-radius: 8px;
-    margin: 5;
-    padding: 5;
+    margin: 0.5rem;
+    padding: 0.1rem;
     &.disabled {
       border: 1px solid #999999;
       background-color: #cccccc;
@@ -170,6 +202,7 @@ body {
     background-color: $player2-color;
   }
 }
+
 .red {
   background-color: red;
 }
