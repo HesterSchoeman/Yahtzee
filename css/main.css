@@ -198,3 +198,10 @@ button.player1 {
 
 button.player2 {
   background-color: #00ffff; }
+
+.blinking {
+  animation: blinkingText 1.2s infinite; }
+
+@keyframes blinkingText {
+  40% {
+    color: transparent; } }

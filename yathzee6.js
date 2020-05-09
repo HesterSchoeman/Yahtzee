@@ -93,6 +93,7 @@ $btnPlay.addEventListener("click", function () {
         $Message.className = "player2";
         $Message.innerHTML = "Player 2 won the game ";
       }
+      $Message.classList.toggle("blinking")
     } else {
       rolls_left = 3;
       currentPlayer = 1 - currentPlayer;
@@ -125,6 +126,9 @@ function startGame() {
   btnRoll.className = 'action player1'
   $Message.className = "player1";
   $Message.innerHTML = "Player 1  : 3 rolls left"
+  if ($Message.classList.contains("blinking")) {
+    $Message.classList.toggle("blinking")
+  }
   resetScoreSheet(player1);
   resetScoreSheet(player2);
   resetDices();
