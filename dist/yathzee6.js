@@ -1,10 +1,6 @@
 let numbers = [];
-let selected = [];
-let pickedColor = 0;
 let currentPlayer = 0;
 let sPlayer = "player1";
-let marked1 = 0;
-let marked2 = 0;
 let itemMarked;
 let rolls_left = 3;
 let bMarked = false;
@@ -33,53 +29,31 @@ let $BS = document.querySelectorAll(".BS");
 let $btnStart = document.getElementById("btnStart");
 let $btnRoll = document.getElementById("btnRoll");
 let $btnPlay = document.getElementById("btnPlay");
-let $Total1 = document.getElementById("sum1");
-let $Total2 = document.getElementById("sum2");
+let $Sum = document.querySelectorAll(".sum");
 let $Message = document.getElementById("message");
 
-function startGame() {
-  numbers = [];
-  selected = [];
-  pickedColor = 0;
-  currentPlayer = 0;
-  sPlayer = "player1";
-  marked1 = 0;
-  marked2 = 0;
-  itemMarked;
-  rolls_left = 3;
-  bMarked = false;
-  nTotal = 0;
-  nTotalLow = 0;
-  nSaved = 0;
-  bGameOver = false;
-  $Total1.innerHTML = "";
-  $Total2.innerHTML = "";
-  $btnPlay.disabled = false;
-  $btnRoll.disabled = false;
-  btnRoll.classList.toggle("player1");
-  $Message.classList.toggle("player1");
-  startPlayer(player1);
-  startPlayer(player2);
-}
-
-startGame();
-initDices();
 initPlayer(player1);
 initPlayer(player2);
-resetDices();
+startGame();
 
-$("#btnStart").on("click", function () {
-  startGame();
-});
+// Set EventListeners (Actions)
+// Actions to take when the a dice is clicked
+dices.forEach((dice) => {
+  dice.addEventListener("click", function () {
+    if (rolls_left < 3) {
+      dice.classList.toggle("red");
+    }
+  });
+})
+
+// Action to take when Start button is clicked
+$btnStart.addEventListener("click", startGame);
 
 // Actions to take when the Roll button is clicked
-// Roll the dices
-// Calculate the scores
-// Keep track of rolls left
-$("#btnRoll").on("click", function () {
+$btnRoll.addEventListener("click", function () {
   rolls_left--;
   rollDices();
-  // $("#rollsLeft").text(rolls_left);
+  calculatescores();
   $Message.innerHTML =
     "Player " + (currentPlayer + 1) + " : " + rolls_left + " rolls left";
   if (rolls_left == 0) {
@@ -91,10 +65,7 @@ $("#btnRoll").on("click", function () {
 });
 
 // Actions to take when the Play button is clicked
-// Check to see if the player selected an score option
-// Marked Score --> saved Score
-// Change over to other player
-$("#btnPlay").on("click", function () {
+$btnPlay.addEventListener("click", function () {
   if (!bMarked) {
     alert("Please select something");
   } else {
@@ -102,61 +73,68 @@ $("#btnPlay").on("click", function () {
     itemMarked.classList.toggle("saved");
     if (sPlayer == "player1") {
       updateTotals(player1);
-      $("#sum1").text(nTotal);
     } else {
       updateTotals(player2);
-      $("#sum2").text(nTotal);
       if (nSaved == 13) {
         bGameOver = true;
-        $btnPlay.disabled = true;
-        $btnRoll.disabled = true;
       }
     }
-    $TL[currentPlayer].innerHTML = nTotalLow;
-    if (nTotalLow >= 63) {
-      $BS[currentPlayer].innerHTML = 35;
-    }
-    if (!bGameOver) {
-      rolls_left = 3;
-      currentPlayer = 1 - currentPlayer;
-      sPlayer = sPlayer == "player1" ? "player2" : "player1";
-      $("#btnRoll").disabled = false;
-      btnRoll.classList.toggle("player2");
-      btnRoll.classList.toggle("player1");
-      $Message.classList.toggle("player1");
-      $Message.classList.toggle("player2");
-      resetDices();
-    } else {
-      if (Number($Total1.innerHTML) > Number($Total2.innerHTML)) {
-        if (!$Message.classList.contains("player1")) {
-          $Message.classList.toggle("player1");
-        }
+    // $TL[currentPlayer].innerHTML = nTotalLow;
+    // if (nTotalLow >= 63) {
+    //   $BS[currentPlayer].innerHTML = 35;
+    // }
+    if (bGameOver) {
+      $btnPlay.disabled = true;
+      $btnRoll.disabled = true;
+      if (Number($Sum[0].innerHTML) > Number($Sum[1].innerHTML)) {
+        $Message.className = "player1"
         $Message.innerHTML = "Player 1 won the game ";
       } else {
-        if (!$Message.classList.contains("player1")) {
-          $Message.classList.toggle("player2");
-        }
+        $Message.className = "player2";
         $Message.innerHTML = "Player 2 won the game ";
       }
+    } else {
+      rolls_left = 3;
+      currentPlayer = 1 - currentPlayer;
+      sPlayer = "player" + (currentPlayer + 1);
+      $("#btnRoll").disabled = false;
+      btnRoll.className = "action " + sPlayer
+      $Message.className = sPlayer
+      $Message.innerHTML = "Player " + (currentPlayer + 1) + " : " + rolls_left + " rolls left";
+      resetDices();
     }
   }
 });
 
-// Add click event to dices
-function initDices() {
-  dices.forEach((dice) => {
-    dice.addEventListener("click", function () {
-      if (rolls_left < 3) {
-        dice.classList.toggle("red");
-      }
-    });
-  });
-}
+
+function startGame() {
+  numbers = [];
+  currentPlayer = 0;
+  sPlayer = "player1";
+  itemMarked;
+  rolls_left = 3;
+  bMarked = false;
+  nTotal = 0;
+  nTotalLow = 0;
+  nSaved = 0;
+  bGameOver = false;
+  $Sum[0].innerHTML = "";
+  $Sum[1].innerHTML = "";
+  $btnPlay.disabled = false;
+  $btnRoll.disabled = true;
+  btnRoll.className = 'action player1'
+  $Message.className = "player1";
+  $Message.innerHTML = "Player 1  : 3 rolls left"
+  resetScoreSheet(player1);
+  resetScoreSheet(player2);
+  resetDices();
+};
+
 
 // Add click event to player1 scoresheet and unmark  (using a for loop to keep track of id for marked)
 function initPlayer(player) {
   for (var i = 0; i < player.length; i++) {
-    player[i].classList.toggle("open");
+    //   player[i].classList.toggle("open");
     if (
       !player[i].classList.contains("TL") &&
       !player[i].classList.contains("BS")
@@ -167,12 +145,9 @@ function initPlayer(player) {
   }
 }
 
-function startPlayer(player) {
+function resetScoreSheet(player) {
   for (var i = 0; i < player.length; i++) {
     player[i].innerHTML = "";
-    if (!player[i].classList.contains("open")) {
-      player[i].classList.toggle("open");
-    }
     if (player[i].classList.contains("saved")) {
       player[i].classList.toggle("saved");
     }
@@ -188,10 +163,8 @@ function selectHand() {
     if (typeof itemMarked != "undefined") {
       itemMarked.classList.toggle("marked");
     }
-    console.log("test", this);
     this.classList.toggle("marked");
     itemMarked = this;
-    marked = this.id;
     bMarked = true;
   }
 }
@@ -199,7 +172,6 @@ function selectHand() {
 function updateTotals(scores) {
   nTotalLow = 0;
   nTotal = 0;
-  nBonus = 0;
   nSaved = 0;
   scores.forEach((score) => {
     if (!score.className.includes("saved")) {
@@ -212,13 +184,16 @@ function updateTotals(scores) {
       nTotal += Number(score.innerHTML);
     }
   });
+  $TL[currentPlayer].innerHTML = nTotalLow;
+  $Sum[currentPlayer].innerHTML = nTotal;
   if (nTotalLow >= 63) {
+    $BS[currentPlayer].innerHTML = 35;
     nTotal += 35;
   }
   return nTotal;
 }
 
-// deselect all dices
+// deselect all dices 
 function resetDices() {
   start = "ROLL>";
   bMarked = false;
@@ -232,7 +207,7 @@ function resetDices() {
   $btnRoll.disabled = false;
 }
 
-// rollDices
+// rollDices 
 function rollDices() {
   for (var i = 0; i < dices.length; i++) {
     if (!dices[i].classList.contains("red")) {
@@ -240,11 +215,10 @@ function rollDices() {
       dices[i].innerHTML = numbers[i];
     }
   }
-  calculatescore();
 }
 
 // Calculate the possible scores
-function calculatescore() {
+function calculatescores() {
   let scoreboard = [
     {
       selector: $ones,
@@ -354,7 +328,7 @@ function straight(number) {
     }
   }
   if (length + 1 >= number) {
-    return number * 10;
+    return (number - 1) * 10;
   } else {
     return 0;
   }

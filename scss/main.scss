@@ -89,6 +89,7 @@ body {
   width: 100%;
   height: 5vh;
   background-color: $back-color;
+  border: 0px ;
   &.player1 {
     color: $player1-color;
   }
@@ -130,7 +131,7 @@ body {
     font-size: 1.5rem;
     text-align: center;
     vertical-align: middle;
-    margin: 0rem 0.5rem;
+    margin: 0.7rem 0.5rem;
     padding: 0.5rem;
     color: white;
     &.red {
@@ -142,7 +143,7 @@ body {
 .actions {
   grid-area: actions;
   display: grid;
-  grid-template-columns: repeat(2, 5fr);
+  grid-template-columns: repeat(2, 4fr);
   justify-items: center;
   height: 10vh;
   .action {
@@ -159,6 +160,19 @@ body {
       color: #666666;
     }
   }
+}
+
+.settings {
+  grid-area: settings;
+  background-color: darken($back-color, 10);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0rem 0.5rem;
+  padding: 0.5rem;
+  color: white;
 }
 
 #rollsCount {

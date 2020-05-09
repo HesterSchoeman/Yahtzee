@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": " ",
+  "homepage": "hesterschoeman.github.io/Yahtzee/yathzee.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "node-sass -w scss/ -o dist/css/ --recursive",
@@ -11,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.14.0"
   }
 }
