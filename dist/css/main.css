@@ -25,7 +25,7 @@ body {
 
 #total1 {
   grid-area: total1;
-  background-color: #ff00bf;
+  background-color: #af0083;
   border: 1px solid black;
   border-radius: 0.5rem;
   text-align: center;
@@ -38,7 +38,7 @@ body {
 
 #total2 {
   grid-area: total2;
-  background-color: #00ffff;
+  background-color: #00afaf;
   border: 1px solid black;
   border-radius: 0.5rem;
   text-align: center;
@@ -79,9 +79,9 @@ body {
   background-color: #444;
   border: 0px; }
   #message.player1 {
-    color: #ff00bf; }
+    color: #af0083; }
   #message.player2 {
-    color: #00ffff; }
+    color: #00afaf; }
 
 .upper-scores {
   grid-area: upper-scores;
@@ -174,18 +174,20 @@ body {
   padding: 0; }
 
 .player1 {
-  background-color: #ff99e5; }
+  background-color: #ffafeb; }
   .player1.marked {
-    background-color: #ff00bf; }
+    background-color: #af0083; }
   .player1.saved {
-    background-color: #ff00bf; }
+    background-color: #7c005d;
+    color: white; }
 
 .player2 {
-  background-color: #99ffff; }
+  background-color: #afffff; }
   .player2.marked {
-    background-color: #00ffff; }
+    background-color: #00afaf; }
   .player2.saved {
-    background-color: #00ffff; }
+    background-color: #007c7c;
+    color: white; }
 
 .red {
   background-color: red; }
@@ -194,10 +196,10 @@ body {
   color: red; }
 
 button.player1 {
-  background-color: #ff00bf; }
+  background-color: #af0083; }
 
 button.player2 {
-  background-color: #00ffff; }
+  background-color: #00afaf; }
 
 .blinking {
   animation: blinkingText 1.2s infinite; }

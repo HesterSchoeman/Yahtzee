@@ -198,22 +198,24 @@ body {
 }
 
 .player1 {
-  background-color: lighten($player1-color, 30);
+  background-color: lighten($player1-color, 50);
   &.marked {
     background-color: $player1-color;
   }
   &.saved {
-    background-color: $player1-color;
+    background-color: darken($player1-color,10);
+    color: white;
   }
 }
 
 .player2 {
-  background-color: lighten($player2-color, 30);
+  background-color: lighten($player2-color, 50);
   &.marked {
     background-color: $player2-color;
   }
   &.saved {
-    background-color: $player2-color;
+    background-color:  darken($player2-color,10);
+    color: white;
   }
 }
 
