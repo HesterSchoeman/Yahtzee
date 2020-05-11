@@ -25,8 +25,9 @@ body {
 
 #total1 {
   grid-area: total1;
-  background-color: #af0083;
+  background-color: #7c005d;
   border: 1px solid black;
+  color: white;
   border-radius: 0.5rem;
   text-align: center;
   justify-content: space-between;
@@ -38,8 +39,9 @@ body {
 
 #total2 {
   grid-area: total2;
-  background-color: #00afaf;
+  background-color: #007c7c;
   border: 1px solid black;
+  color: white;
   border-radius: 0.5rem;
   text-align: center;
   justify-content: space-between;
