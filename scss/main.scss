@@ -35,6 +35,7 @@ body {
 }
 @mixin totals {
   border: 1px solid black;
+  color: white;
   border-radius: 0.5rem;
   text-align: center;
   justify-content: space-between;
@@ -47,13 +48,13 @@ body {
 
 #total1 {
   grid-area: total1;
-  background-color: $player1-color;
+  background-color:  darken($player1-color,10);
   @include totals;
 }
 
 #total2 {
   grid-area: total2;
-  background-color: $player2-color;
+  background-color:  darken($player2-color,10);
   @include totals;
 }
 
